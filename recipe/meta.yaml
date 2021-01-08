@@ -1,0 +1,53 @@
+{% set name = 'pscache' %}
+{% set version = '0.2' %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  url: https://github.com/slaclab/{{ name }}/archive/v{{ version}}.tar.gz
+  sha256: 5125e1c4bfcc8feb4aa9bca7179d5bcc11777c20d545e8c77048c0f496243273 
+
+build:
+  skip: True  # [win or osx]
+  number: 0
+  script:
+    - python setup.py install --single-version-externally-managed --record=record.txt
+
+requirements:
+  build: 
+    - python 
+    - setuptools 
+  host:
+    - redis-py 
+    - numpy 
+    - psana-conda 
+ 
+  run: 
+    - python 
+    - redis-py 
+    - numpy 
+    - psana-conda
+
+test:
+  imports:
+    - pscache
+
+about:
+  home: https://lcls.slac.stanford.edu
+  license: BSD-3-Clause
+  license_family: BSD
+  license_file: LICENSE.md
+  summary: 'Live hub for intermediate LCLS analysis results'
+  description: |
+    a "live" hub for intermediate LCLS analysis results. Useful for
+    cases where the analysis is too complex for AMI and ~2-3 min
+    delay is acceptable. Emphasizes simple and flexible access to data.
+  doc_url: https://github.com/slaclab/pscache/blob/master/README.md  
+  dev_url: https://github.com/slaclab/pscache
+
+extra:
+  recipe-maintainers:
+    - valmar
+    - chrisvam
