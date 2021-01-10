@@ -37,7 +37,7 @@ about:
   license_file: LICENSE.md
   summary: 'Live hub for intermediate LCLS analysis results'
   description: |
-    a "live" hub for intermediate LCLS analysis results. Useful for
+    a live hub for intermediate LCLS analysis results. Useful for
     cases where the analysis is too complex for AMI and ~2-3 min
     delay is acceptable. Emphasizes simple and flexible access to data.
   doc_url: https://github.com/slaclab/pscache/blob/master/README.md  
